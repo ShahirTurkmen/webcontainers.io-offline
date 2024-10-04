@@ -168,9 +168,10 @@ var startServer = async (endpoint, config2, args2, previous) => {
       const formattedTime = `${requestTime.toLocaleDateString()} ${requestTime.toLocaleTimeString()}`;
       const ipAddress = request.socket.remoteAddress?.replace("::ffff:", "") ?? "unknown";
       const requestUrl = `${request.method ?? "GET"} ${request.url ?? "/"}`;
-      if (!args2["--no-request-logging"])
+      if (!args2["--no-request-logging"]) {
+        
         logger.http(chalk2.dim(formattedTime), chalk2.yellow(ipAddress), chalk2.cyan(requestUrl));
-      if (args2["--cors"]) {
+      }
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Headers", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
@@ -178,7 +179,6 @@ var startServer = async (endpoint, config2, args2, previous) => {
         response.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
         response.setHeader("Cross-Origin-Opener-Policy", "same-origin");
         response.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-      }
       if (!args2["--no-compression"])
         await compress(request, response);
       await handler(request, response, config2);
