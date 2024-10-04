@@ -1,0 +1,15 @@
+{
+  "name": "webcontainers.io",
+  "version": "1.0.0",
+  "main": "blitz.41692973.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "picocolors": "^1.1.0"
+  }
+}
